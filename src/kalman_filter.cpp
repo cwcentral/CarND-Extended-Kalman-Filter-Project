@@ -46,6 +46,19 @@ void KalmanFilter::Update(const VectorXd &z) {
 	P_ = (I - K * H_) * P_;
 }
 
+#define M_PI 3.14159265359
+#define M_2PI (2 * M_PI)
+
+float constrain_pi(float in1)
+{
+	 if (in1 > M_PI)
+	        in1 -= M_2PI;
+	 else if (in1 < -M_PI)
+	        in1 += M_2PI;
+
+	 return in1;
+}
+
 void KalmanFilter::UpdateEKF(const VectorXd &z) {
 	/**
 	 TODO:
@@ -69,11 +82,7 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
 
 	VectorXd y = z - z_pred;
 
-    if (y(1) > 3.14159)
-        y(1) = y(1) - 6.2831;
-    else if (y(1) < -3.14159)
-        y(1) = y(1) + 6.2831;
-
+	y(1) = constrain_pi(y(1));
 
 	MatrixXd Ht = H_.transpose();
 	MatrixXd S = H_ * P_ * Ht + R_;
