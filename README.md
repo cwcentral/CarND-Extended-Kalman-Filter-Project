@@ -2,36 +2,40 @@
 
 ## Objectives
 
-1. Code must compile without errors with cmake and make. 
+### 1. Code must compile without errors with cmake and make. 
 
 NOTE: since eigen printed many compile warning, I added a -w to the CMakelist.txt to clean up the output.
 
-2. px, py, vx, vy output coordinates must have an RMSE <= [.11, .11, 0.52, 0.52] 
+### 2. px, py, vx, vy output coordinates must have an RMSE <= [.11, .11, 0.52, 0.52] 
 
-Running my built application: ExtendedKF against the Udacity C++ simulator, I was able to achieve an accuracy of [0.097, 0.084, 0.45, 0.43] after 3 runs and appeared consistent within range.
+We run ./ExtendedEKF against the linux simulator: [term2_sim.x86_64](https://github.com/udacity/self-driving-car-sim/releases) from the car-nd-term2 starter kit.
+
+Running my built application: ExtendedKF against the Udacity C++ simulator, I was able to achieve an accuracy of 
+
+[0.097, 0.084, 0.45, 0.43] and appeared consistent within range **upon initial run**, i.e. starting with [0,0,0,0]. Restarting with the previous vallues/rsme the rmse does increase in error slightly.
 
 <img src="output/1.png" width="480" alt="Output from EKF Sensor Fusion" />
 
-3. Your Sensor Fusion algorithm follows the general processing flow as taught in the preceding lessons.
+### 3. Your Sensor Fusion algorithm follows the general processing flow as taught in the preceding lessons.
 
 The sensor fusion algorithm follows the standard pipeline:
 
 <img src="output/2.png" width="480" alt="Output from EKF Sensor Fusion" />
 (Credit: Udacity)
 
-4. Your Kalman Filter algorithm handles the first measurements appropriately.
+### 4. Your Kalman Filter algorithm handles the first measurements appropriately.
 
 In the method *void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack)* of the file *FusionEKF.cpp*, the first measurements are used under the is_initialized code block.
 
-5. Your Kalman Filter algorithm first predicts then updates.
+### 5. Your Kalman Filter algorithm first predicts then updates.
 
 In the method *void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack)* of the file *FusionEKF.cpp*, the predict workflow is executed, the update logic is used based on the measurement type (RADAR vs LASER).
 
-6. Your Kalman Filter can handle radar and lidar measurements.
+### 6. Your Kalman Filter can handle radar and lidar measurements.
 
 Please see FusionEKF and KalmanFilter classes.
 
-7. Your algorithm should avoid unnecessary calculations.
+### 7. Your algorithm should avoid unnecessary calculations.
 
 We followed closely the example put forth in the classwork as well as leverage Eigen::MatrixXd and Eigen::VectorXd matrix operators to reduce complexity.
 
