@@ -8,6 +8,8 @@ NOTE: since eigen printed many compile warning, I added a -w to the CMakelist.tx
 
 ### 2. px, py, vx, vy output coordinates must have an RMSE <= [.11, .11, 0.52, 0.52] 
 
+We run ./ExtendedEKF against the linux simulator: [term2_sim.x86_64](https://github.com/udacity/self-driving-car-sim/releases) from the car-nd-term2 starter kit.
+
 Running my built application: ExtendedKF against the Udacity C++ simulator, I was able to achieve an accuracy of 
 
 [0.097, 0.084, 0.45, 0.43] after 3 runs and appeared consistent within range.
