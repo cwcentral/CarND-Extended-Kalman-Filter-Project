@@ -12,7 +12,7 @@ We run ./ExtendedEKF against the linux simulator: [term2_sim.x86_64](https://git
 
 Running my built application: ExtendedKF against the Udacity C++ simulator, I was able to achieve an accuracy of 
 
-[0.097, 0.084, 0.45, 0.43] after 3 runs and appeared consistent within range.
+[0.097, 0.084, 0.45, 0.43] and appeared consistent within range upon starting with [0,0,0,0]. Restarting with the previous vallues/rsme the rmse does increase in error slightly.
 
 <img src="output/1.png" width="480" alt="Output from EKF Sensor Fusion" />
 
